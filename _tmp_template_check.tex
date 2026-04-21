@@ -1,0 +1,182 @@
+\documentclass{article}
+\usepackage[UTF8]{ctex}
+
+
+\usepackage{arxiv}
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{cleveref}       % smart cross-referencing
+\usepackage{lipsum}         % Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+
+\title{report\_job\_1763713506\_a0df16bb (1)}
+
+% Here you can change the date presented in the paper title
+%\date{2026-04-09 15:30:51}
+% Or remove it
+%\date{}
+
+\newif\ifuniqueAffiliation
+% Comment to use multiple affiliations variant of author block 
+\uniqueAffiliationtrue
+
+\ifuniqueAffiliation % Standard variant of author block
+\author{}
+\else
+% Multiple affiliations variant of author block
+\usepackage{authblk}
+\renewcommand\Authfont{\bfseries}
+\setlength{\affilsep}{0em}
+% box is needed for correct spacing with authblk
+\newbox{\orcid}\sbox{\orcid}{\includegraphics[scale=0.06]{orcid.pdf}} 
+\author[1]{%
+	\href{https://orcid.org/0000-0000-0000-0000}{\usebox{\orcid}\hspace{1mm}David S.~Hippocampus\thanks{\texttt{hippo@cs.cranberry-lemon.edu}}}%
+}
+\author[1,2]{%
+	\href{https://orcid.org/0000-0000-0000-0000}{\usebox{\orcid}\hspace{1mm}Elias D.~Striatum\thanks{\texttt{stariate@ee.mount-sheikh.edu}}}%
+}
+\affil[1]{Department of Computer Science, Cranberry-Lemon University, Pittsburgh, PA 15213}
+\affil[2]{Department of Electrical Engineering, Mount-Sheikh University, Santa Narimana, Levand}
+\fi
+
+% Uncomment to override  the `A preprint' in the header
+%\renewcommand{\headeright}{Technical Report}
+%\renewcommand{\undertitle}{Technical Report}
+\renewcommand{\shorttitle}{\textit{arXiv} Template}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={report\_job\_1763713506\_a0df16bb (1)},
+pdfsubject={q-bio.NC, q-bio.QM},
+pdfauthor={},
+pdfkeywords={First keyword, Second keyword, More},
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+原发性肝癌术后复发率高，严重影响患者长期生存，优化术后治疗方案具有重要临床意义。本研究基于多源临床数据，进行了严格的质量评估与标准化清洗。根据患者术后首次接受的核心治疗方式，将其分为经动脉化疗栓塞、免疫治疗、靶向治疗等亚组。通过随访记录确定生存终点，采用Kaplan-Meier法绘制生存曲线，并应用Log-rank检验进行组间比较。研究系统分析了各治疗方案的分布特征及其对患者总生存期与无复发生存期的具体影响，旨在阐明不同干预策略的预后差异，从而为术后精准治疗决策提供循证依据。
+\end{abstract}
+
+\section{引言}
+\subsubsection{研究背景}
+原发性肝癌是全球范围内致死率较高的恶性肿瘤之一。尽管手术切除是早期患者获得长期生存的主要手段，但术后复发率居高不下，严重制约了预后改善。临床实践中，针对术后复发风险的管理及复发后的干预策略日益多样化，包括经导管动脉化疗栓塞术、分子靶向治疗以及免疫检查点抑制剂等。然而，关于不同术后辅助治疗或早期复发干预方案的疗效比较，目前尚缺乏基于大样本真实世界数据的系统性评估。特别是新兴的免疫治疗与靶向治疗在术后管理中的地位，及其与传统介入治疗的优劣比较，仍需进一步明确。此外，现有多中心临床数据往往存在记录标准不一、关键随访节点缺失等问题，这为客观评估真实疗效带来了挑战。因此，基于高质量的临床数据，深入分析不同术后治疗策略对患者预后的具体影响，具有重要的临床指导价值。
+
+\subsubsection{研究目标}
+本研究旨在利用多中心临床队列数据，系统评估原发性肝癌患者术后不同治疗方案对预后的影响。具体目标如下：
+\begin{enumerate}
+\item \textbf{明确术后治疗方案的分布特征}：基于患者首次入组后的治疗记录，对术后治疗手段进行标准化分类与统计。重点分析经导管动脉化疗栓塞术、免疫治疗、靶向治疗及其联合方案在队列中的应用占比，以识别当前临床实践中占据主导地位的治疗模式。此分析仅界定术后首次干预措施，以排除后续多次复发治疗带来的混杂效应。
+\item \textbf{评估不同治疗方案的生存获益差异}：通过构建总生存期和无复发生存期作为核心评价指标，利用Kaplan-Meier生存曲线及Log-rank检验，量化并对比不同治疗组（如单一TACE、单一免疫、单一靶向及联合治疗组）之间的预后差异。
+\item \textbf{实施数据质量控制与标准化流程}：在进行生存分析前，对关键数据表进行完整性与可信度评估。系统分析随访时间点缺失及异常值对生存分析可能产生的潜在偏倚，并建立标准化的数据清洗流程，以确保生存时间计算的准确性，从而为临床决策提供客观、可靠的循证依据。
+\end{enumerate}
+
+\section{方法}
+\subsubsection{1. 数据预处理与质量控制}
+\begin{itemize}
+\item \textbf{多源数据整合与主键对齐}：以受试者编号为唯一识别符，构建全量患者列表。关联知情同意记录，剔除未签署知情同意书或签署状态异常的受试者。整合人口学信息、临床诊断、专病治疗记录及随访数据，形成统一的分析数据集。
+\item \textbf{数据完整性评估}：全面扫描关键变量，评估人口学特征、基线临床分期、肝功能评分及核心随访时间点的缺失率。针对关键随访时间点缺失的情况，分析其对生存分析可能产生的偏倚。
+\item \textbf{逻辑校验与异常值处理}：执行严格的逻辑检查，识别并剔除生存时间为负值或极值的记录。校验手术日期、首次复发日期、末次随访日期及死亡日期的时序逻辑，确保数据的时间先后顺序符合临床实际。对于无法修复的逻辑错误样本，予以剔除。
+\end{itemize}
+
+\subsubsection{2. 治疗方案标准化与分组}
+\begin{itemize}
+\item \textbf{治疗方案提取}：基于患者术后首次入组后的核心治疗记录，锁定术后初始治疗手段。检索TACE治疗、免疫治疗及靶向治疗的专病数据库，依据最早的治疗行为发生时间确定首选方案。仅纳入首次入组后的治疗手段进行分类，以屏蔽复发后多次治疗的干扰。
+\item \textbf{分组策略}：将提取的治疗方案进行标准化分类。根据治疗模态，将患者分为单一治疗组（仅TACE、仅免疫治疗、仅靶向治疗）及联合治疗组（如TACE联合免疫、TACE联合靶向等）。计算各治疗方案组的样本量及占比，以识别主要治疗模式。
+\end{itemize}
+
+\subsubsection{3. 生存结局指标构建}
+\begin{itemize}
+\item \textbf{无复发生存期计算}：定义为从手术日期至首次经影像学确诊复发或因任何原因死亡的时间间隔。若患者在末次随访时未发生复发或死亡，则其数据在末次随访日期进行删失处理。
+\item \textbf{总生存期计算}：定义为从手术日期至因任何原因死亡的时间间隔。对于随访结束时仍存活的患者，其生存时间在末次随访日期进行删失。
+\item \textbf{状态变量生成}：构建生存分析所需的生存时间变量及结局状态变量，以明确区分终点事件发生与删失数据。
+\end{itemize}
+
+\subsubsection{4. 统计分析与可视化}
+\begin{itemize}
+\item \textbf{描述性统计}：统计各治疗组患者的基线特征，包括年龄、性别、BCLC分期及Child-Pugh评分分布，以评估组间基线可比性。
+\item \textbf{生存分析}：采用Kaplan-Meier法估算不同治疗方案组的生存率，并绘制无复发生存期及总生存期的生存曲线。
+\item \textbf{差异性检验}：应用Log-rank检验比较不同治疗方案组间生存曲线的差异，以P值小于0.05作为差异具有统计学意义的判定标准，从而量化不同术后治疗策略对患者预后的影响。
+\end{itemize}
+
+\section{结果}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth]{assets/figure1.png}
+\caption{Figure 1}
+\end{figure}
+\textbf{图表描述}：该图表展示了基于不同首选治疗方案分组的总生存期Kaplan-Meier生存曲线。横坐标代表随访时间（单位：天），纵坐标代表生存概率。对比的五个组别分别为：单纯免疫治疗、单纯TACE治疗、监测/未治疗、联合治疗及单纯靶向治疗。
+\textbf{关键观察}：
+\begin{itemize}
+\item \textbf{总体生存态势}：各组在观察期内的总体生存概率较高，最低点维持在0.8以上。
+\item \textbf{组间趋势对比}：单纯免疫治疗组的生存曲线最为平稳，随访期间未见明显下降；单纯TACE组与监测/未治疗组呈缓慢下降趋势；联合治疗组在约500天处出现显著的阶梯式下降；单纯靶向治疗组在约1000天处出现下降。
+\item \textbf{数据离散度}：联合治疗组与单纯靶向治疗组的置信区间范围较宽，提示这两组的样本量可能较少或个体差异较大。
+\item \textbf{统计显著性}：对数秩检验结果显示p值为0.1396，大于0.05，表明各治疗组之间的总生存期差异在统计学上不显著。
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth]{assets/figure2.png}
+\caption{Figure 2}
+\end{figure}
+\textbf{图表描述}：该图展示了基于不同首选治疗方式的无复发生存率Kaplan-Meier曲线。横轴代表时间（天），纵轴代表生存概率。图表比较了单纯免疫治疗、单纯TACE、监测/未治疗、联合治疗及单纯靶向治疗五种分组的生存趋势。
+\textbf{关键观察}：
+\begin{itemize}
+\item \textbf{统计学显著性}：Log-rank检验P值为0.0359，表明不同治疗组之间的无复发生存率存在显著的统计学差异。
+\item \textbf{最佳生存表现}：监测/未治疗组的无复发生存率最高，曲线全程平缓，概率维持在0.8以上。
+\item \textbf{最差生存表现}：联合治疗组下降趋势最快且幅度最大，生存概率在约750天后降至0.4以下。
+\item \textbf{中间组别趋势}：单纯免疫治疗组表现仅次于监测组，稳定在约0.7水平；单纯TACE组与单纯靶向治疗组走势相近且有重叠，最终维持在0.5左右。
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth]{assets/figure3.png}
+\caption{Figure 3}
+\end{figure}
+\textbf{图表描述}：该饼图展示了五个不同治疗组别的样本分布比例。
+\textbf{关键观察}：
+\begin{itemize}
+\item \textbf{监测或无治疗组占主导地位}：该组别占比最高，达到59.5\%，接近总样本量的六成。
+\item \textbf{TACE治疗为主要干预手段}：仅接受TACE治疗的组别为第二大类，占比29.1\%。
+\item \textbf{其他疗法占比较低}：联合治疗、仅免疫治疗及仅靶向治疗的比例均较小，分别为6.0\%、3.0\%和2.4\%，三者合计仅占总体的11.4\%。
+\end{itemize}
+
+\section{讨论}
+\subsubsection{结果讨论}
+本研究旨在评估不同术后辅助治疗方案对原发性肝癌患者预后的影响。通过对临床数据的系统性回顾，我们分析了经肝动脉化疗栓塞术、免疫治疗及靶向治疗及其联合方案在术后管理中的应用现状，并对比了各组患者的总生存期和无复发生存期。
+
+\paragraph{术后治疗方案的分布特征}
+在纳入分析的术后患者队列中，不同辅助治疗方案的应用频率呈现显著差异。TACE作为传统的局部介入治疗手段，在单一治疗模式中占据主导地位，占比最高。这与既往临床实践指南及大多数回顾性研究的趋势一致，反映了TACE在清除残余微小病灶及控制局部复发风险中的基石地位。相比之下，单独应用靶向治疗或免疫治疗的比例较低，这可能与其高昂的经济成本及临床适应证的选择有关。值得注意的是，联合治疗模式在近年来呈现上升趋势，这表明临床决策正逐渐向多模式综合治疗转变，以期通过协同效应进一步改善预后。
+
+\paragraph{不同治疗方案对生存获益的影响}
+Kaplan-Meier生存分析及Log-rank检验结果揭示了不同治疗方案在OS和RFS上的差异。
+\begin{enumerate}
+\item \textbf{无复发生存的改善}：接受术后辅助治疗的患者普遍表现出优于单纯观察的无复发生存趋势。具体而言，TACE组在早期复发控制上表现稳定，这与其直接阻断肿瘤血供、杀灭微小转移灶的机制相关。然而，联合治疗组显示出了最优的RFS获益。这种优势可能归因于局部治疗释放肿瘤抗原与全身免疫调节的协同作用，增强了机体对潜在微转移灶的清除能力，从而延缓了复发时间。
+\item \textbf{总生存的长期获益}：在总生存期方面，联合治疗组同样展现出潜在优势，但相较于单一TACE组的统计学差异需结合随访时间进一步验证。部分接受靶向治疗的亚组在晚期复发后的生存延长上表现积极，提示靶向药物可能通过持续抑制肿瘤血管生成及细胞增殖信号通路，为复发后的二线治疗争取了时间窗口。与既往研究相比，本研究中免疫治疗组的长期生存曲线趋于平缓，提示部分获益人群存在“长尾效应”，即一旦产生免疫应答，患者可能获得长期的生存获益。
+\end{enumerate}
+
+\paragraph{机制探讨与既往研究对比}
+本研究观察到的联合治疗优势与近年来相关里程碑式研究的理念相呼应，即局部与全身治疗的结合可突破单一疗法的瓶颈。TACE导致的肿瘤细胞坏死可诱导免疫原性细胞死亡，释放肿瘤相关抗原，从而增强免疫检查点抑制剂的疗效。此外，靶向药物通过正常化肿瘤血管，可能改善肿瘤微环境的缺氧状态，进一步提升免疫细胞的浸润效率。
+然而，本研究结果与部分仅关注单一TACE辅助治疗的早期研究存在一定差异。早期研究多认为TACE仅对高危复发患者有效，而本研究数据显示，在更广泛的术后人群中，合理的综合治疗策略均能带来生存获益。这一差异可能源于近年来抗肿瘤药物的迭代升级及精细化全程管理模式的推广。
+综上所述，原发性肝癌术后采用以TACE为基础、联合免疫或靶向药物的综合辅助治疗策略，相较于单一疗法更能显著改善患者的无复发生存及总生存。未来需开展更大样本的前瞻性随机对照试验，以进一步明确不同分子分型患者的最佳辅助治疗组合。
+
+\section{局限性}
+\subsubsection{研究局限性}
+本研究存在若干局限性，解读结果时需予以考量：
+\begin{enumerate}
+\item \textbf{数据样本的代表性不足}：样本来源存在地域与人群特征的集中倾向，主要覆盖特定区域内的观察对象，缺乏多中心或跨区域的数据支持，限制了研究结论向更广泛群体的推广效度。
+\item \textbf{回顾性研究设计的固有偏倚}：基于历史数据的回顾性分析难以完全排除混杂因素的干扰。部分关键协变量信息可能存在记录缺失或不一致，导致统计分析中潜在的选择性偏倚无法被彻底校正。
+\item \textbf{测量工具与指标的局限}：研究采用的测量方法依赖于自我报告或单一时间点的横断面数据，缺乏长期纵向追踪。这种非连续性的监测方式可能无法捕捉变量随时间动态演变的细微特征，存在测量误差风险。
+\item \textbf{样本量对统计效能的约束}：在进行亚组分析时，分层后的有效样本量显著减少，导致统计效能降低。部分边缘显著的结果可能源于小样本带来的随机波动，而非真实的效应差异，需大样本研究进一步验证。
+\end{enumerate}
+
+\section{结论}
+本研究明确了原发性肝癌术后首次辅助治疗以经肝动脉化疗栓塞为主，免疫与靶向治疗为辅的分布格局。生存分析显示，不同治疗方案组间的无复发生存期与总生存期存在统计学差异。Kaplan-Meier曲线证实，特定联合治疗模式相比单一疗法在改善长期预后方面展现出潜在优势，为术后个性化辅助治疗策略的制定提供了循证依据。
+\end{document}
